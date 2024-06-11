@@ -1,0 +1,27 @@
+<mat-form-field>
+  <mat-label>Name</mat-label>
+  <input matInput placeholder="Placeholder" [formControl]="nameControl" />
+</mat-form-field>
+
+<button (click)="updateName()">Click</button>
+
+<hr/>
+
+<form action="" [formGroup]="userForm">
+  <mat-form-field>
+    <mat-label>User Name</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="userName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>User Age</mat-label>
+    <input matInput placeholder="Placeholder" formControlName="userAge" />
+  </mat-form-field>
+</form>
+
+<button (click)="submit()">Submit</button>
+
+<!-- @if(nameControl.invalid && (nameControl.touched || nameControl.dirty)) {
+    @if (nameControl.errors?.['forbiddenName']) {
+      <div>{{nameControl.errors?.['forbiddenName']?.value}}</div>
+    }
+  } -->
