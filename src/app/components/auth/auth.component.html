@@ -1,0 +1,8 @@
+<h1>Login</h1>
+<div class="login">
+  <mat-form-field>
+    <mat-label>Login</mat-label>
+    <input matInput [formControl]="loginForm" />
+  </mat-form-field>
+  <button mat-stroked-button [disabled]="loginForm.invalid" (click)="login()">Login</button>
+</div>

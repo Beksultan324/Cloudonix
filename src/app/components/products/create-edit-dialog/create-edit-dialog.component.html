@@ -1,0 +1,64 @@
+<h2 mat-dialog-title>{{ action }} Product</h2>
+<mat-dialog-content>
+  <form [formGroup]="productForm" class="form">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" required />
+      @if (name.invalid && (name.touched || name.dirty)) {
+      <mat-error>You must enter a value</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" required />
+      @if (description.invalid && (description.touched || description.dirty)) {
+      <mat-error>You must enter a value</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>SKU</mat-label>
+      <input matInput formControlName="sku" required />
+      @if (sku.invalid && (sku.touched || sku.dirty)) {
+      <mat-error>You must enter a value</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Cost</mat-label>
+      <input matInput formControlName="cost" required />
+      @if (cost.invalid && (cost.touched || cost.dirty)) {
+      <mat-error>
+        @if (cost.errors?.['required']) {
+        <span>You must enter a value</span>
+        } @if (cost.errors?.['pattern']) {
+        <span>Cost is invalid</span>
+        }
+      </mat-error>
+      }
+    </mat-form-field>
+    <div formGroupName="profile">
+      <h4>Profile</h4>
+      <div class="form-profile">
+        <mat-form-field>
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="type" name="food">
+            @for (type of types; track type) {
+            <mat-option [value]="type">{{ type }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-checkbox formControlName="available">Available</mat-checkbox>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button
+    mat-button
+    [disabled]="productForm.invalid"
+    [mat-dialog-close]="productForm.getRawValue()"
+    cdkFocusInitial
+    >
+    {{ action }}
+  </button>
+</mat-dialog-actions>

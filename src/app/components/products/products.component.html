@@ -1,0 +1,14 @@
+<div class="products">
+  <div class="header">
+    <h2>Products</h2>
+    <button mat-flat-button (click)="add()">
+      <mat-icon>add</mat-icon>Add Product
+    </button>
+  </div>
+  <app-products-table
+    [dataSource]="products"
+    (onEdit)="edit($event)"
+    (onDelete)="delete($event)"
+    (onShowDetail)="openShowDetailDialog($event)"
+  ></app-products-table>
+</div>
